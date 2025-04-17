@@ -6,11 +6,11 @@ execute:
   echo: true
 
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "Final project"
   author:
-    - AUTHOR1 (UNI1)
+    - Lilly Loghmani (lql2103)
     - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
+  repo-url: https://github.com/LillyLog/imlv-l
   date: today
   page-footer:
     right: |
