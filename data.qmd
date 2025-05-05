@@ -3,3 +3,392 @@
 ## Description
 
 ## Missing value analysis
+
+# Data Preparation
+
+This chapter details the data sources, cleaning processes, and feature engineering steps performed to prepare the datasets for analysis.
+
+## Data Sources
+
+The analysis integrates three main data sources:
+
+1. **Traffic Volume Data**: The "Automated Traffic Volume Counts" dataset from NYC DOT, with vehicle counts at specific locations, timestamps, and road segments.
+
+2. **Weather Data**: Monthly temperature and rainfall data for NYC from 2013-2025.
+
+3. **Emergency Response Data**: The "911 Open Data" dataset with emergency response times by borough and month.
+
+## Data Cleaning and Preprocessing
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(scales)
+library(here)
+```
+
+### Weather Data Preprocessing
+
+```{r}
+#| label: weather-preprocessing
+
+# Set file paths
+weather_temp_path <- here("data", "monthly_nyc_weather.csv")
+weather_rain_path <- here("data", "monthly_nyc_rain.csv")
+
+# Function to preprocess weather data
+preprocess_weather_data <- function() {
+  # Load temperature and rainfall data
+  temp_df <- read_csv(weather_temp_path)
+  rain_df <- read_csv(weather_rain_path)
+  
+  # Convert Month format to date
+  temp_df <- temp_df %>%
+    mutate(Date = as.Date(paste0(Month, "01"), format = "%Y%m%d"))
+  
+  rain_df <- rain_df %>%
+    mutate(Date = as.Date(paste0(Month, "01"), format = "%Y%m%d"))
+  
+  # Rename columns for clarity
+  temp_df <- temp_df %>%
+    rename(Temperature = Value, TempAnomaly = Anomaly)
+  
+  rain_df <- rain_df %>%
+    rename(Rainfall = Value, RainAnomaly = Anomaly)
+  
+  # Merge temperature and rainfall data
+  weather_df <- temp_df %>%
+    inner_join(rain_df, by = c("Date"))
+  
+  # Extract date components for analysis
+  weather_df <- weather_df %>%
+    mutate(
+      Year = year(Date),
+      Month = month(Date),
+      # Create season feature
+      Season = case_when(
+        Month %in% c(12, 1, 2) ~ "Winter",
+        Month %in% c(3, 4, 5) ~ "Spring",
+        Month %in% c(6, 7, 8) ~ "Summer",
+        TRUE ~ "Fall"
+      )
+    )
+  
+  return(weather_df)
+}
+
+# Process weather data
+weather_df <- preprocess_weather_data()
+
+# Display the first few rows
+head(weather_df)
+```
+
+### Traffic Data Preprocessing
+
+```{r}
+#| label: traffic-preprocessing
+#| eval: false
+
+traffic_path <- here("data", "Automated_Traffic_Volume_Counts_20250505.csv")
+
+# Function to preprocess traffic data
+preprocess_traffic_data <- function(sample_size = NULL) {
+  # Load traffic data with sampling if needed due to size
+  if (!is.null(sample_size)) {
+    traffic_df <- read_csv(traffic_path, n_max = sample_size)
+  } else {
+    traffic_df <- read_csv(traffic_path)
+  }
+  
+  # Handle missing values
+  traffic_df <- traffic_df %>%
+    filter(!is.na(Vol))
+  
+  # Create datetime column and extract components
+  traffic_df <- traffic_df %>%
+    mutate(
+      DateTime = as.POSIXct(paste(Yr, M, D, HH, MM, sep = "-"), format = "%Y-%m-%d-%H-%M"),
+      Year = year(DateTime),
+      Month = month(DateTime),
+      Day = day(DateTime),
+      DayOfWeek = wday(DateTime) - 1,  # 0 = Sunday, 6 = Saturday
+      Hour = hour(DateTime),
+      
+      # Create features for time of day
+      TimeOfDay = case_when(
+        Hour >= 6 & Hour < 10 ~ "Morning",
+        Hour >= 10 & Hour < 16 ~ "Midday",
+        Hour >= 16 & Hour < 20 ~ "Evening",
+        TRUE ~ "Night"
+      ),
+      
+      # Create weekday/weekend feature
+      IsWeekend = if_else(DayOfWeek >= 5, 1, 0)
+    )
+  
+  return(traffic_df)
+}
+
+# Process traffic data (with sampling due to large file size)
+traffic_df <- preprocess_traffic_data(sample_size = 100000)
+
+# Show summary
+summary(traffic_df)
+```
+
+### Emergency Response Data Preprocessing
+
+```{r}
+#| label: emergency-preprocessing
+
+emergency_path <- here("data", "911_Open_Data_Local_Law_119_20250505.csv")
+
+# Function to preprocess emergency response data
+preprocess_emergency_data <- function() {
+  emergency_df <- read_csv(emergency_path)
+  
+  # Extract date from 'Month Name' column
+  emergency_df <- emergency_df %>%
+    mutate(
+      Date = as.Date(paste0("01 ", `Month Name`), format = "%d %Y / %m"),
+      Year = year(Date),
+      Month = month(Date)
+    )
+  
+  return(emergency_df)
+}
+
+# Process emergency data
+emergency_df <- preprocess_emergency_data()
+
+# Display the structure
+glimpse(emergency_df)
+```
+
+## Exploratory Data Analysis
+
+
+```{r}
+#| label: weather-plots
+#| fig.width: 10
+#| fig.height: 6
+
+# 1. Weather patterns over time
+ggplot(weather_df, aes(x = Date, y = Temperature)) +
+  geom_line() +
+  labs(
+    title = "Monthly Temperature in NYC (2013-2025)",
+    x = "Date",
+    y = "Temperature (F)"
+  ) +
+  theme_minimal()
+
+ggplot(weather_df, aes(x = Date, y = Rainfall)) +
+  geom_line() +
+  labs(
+    title = "Monthly Rainfall in NYC (2013-2025)",
+    x = "Date",
+    y = "Rainfall (inches)"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+#| label: traffic-plots
+#| fig.width: 10
+#| fig.height: 6
+#| eval: false
+
+# Traffic volume by time of day
+traffic_df %>%
+  group_by(TimeOfDay) %>%
+  summarize(MeanVolume = mean(Vol, na.rm = TRUE)) %>%
+  mutate(TimeOfDay = factor(TimeOfDay, levels = c("Morning", "Midday", "Evening", "Night"))) %>%
+  ggplot(aes(x = TimeOfDay, y = MeanVolume)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Average Traffic Volume by Time of Day",
+    x = "Time of Day",
+    y = "Average Volume"
+  ) +
+  theme_minimal()
+
+# Traffic volume by borough
+traffic_df %>%
+  group_by(Boro) %>%
+  summarize(MeanVolume = mean(Vol, na.rm = TRUE)) %>%
+  arrange(desc(MeanVolume)) %>%
+  ggplot(aes(x = reorder(Boro, MeanVolume), y = MeanVolume)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Average Traffic Volume by Borough",
+    x = "Borough",
+    y = "Average Volume"
+  ) +
+  theme_minimal() +
+  coord_flip()
+```
+
+```{r}
+#| label: emergency-plots
+#| fig.width: 10
+#| fig.height: 6
+#| eval: false
+
+# Emergency response times by borough
+ggplot(emergency_df, aes(x = Borough, y = `Response Times`)) +
+  geom_boxplot(fill = "steelblue", alpha = 0.7) +
+  labs(
+    title = "Emergency Response Times by Borough",
+    x = "Borough",
+    y = "Response Time (seconds)"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Data Integration
+
+```{r}
+#| label: data-integration
+#| eval: false
+
+# Function to integrate datasets
+integrate_datasets <- function(traffic_df, weather_df, emergency_df) {
+  # Aggregate traffic data to daily level
+  daily_traffic <- traffic_df %>%
+    group_by(Year, Month, Day, Boro) %>%
+    summarize(Vol = mean(Vol, na.rm = TRUE), .groups = "drop") %>%
+    mutate(Date = as.Date(paste(Year, Month, Day, sep = "-")))
+  
+  # Expand weather data to daily
+  weather_expanded <- weather_df %>%
+    select(Date, Temperature, Rainfall, TempAnomaly, RainAnomaly, Season) %>%
+    mutate(
+      month_start = floor_date(Date, "month"),
+      month_end = ceiling_date(Date, "month") - days(1)
+    )
+  
+  # Create daily weather records
+  daily_weather_records <- list()
+  
+  for (i in 1:nrow(weather_expanded)) {
+    row <- weather_expanded[i, ]
+    date_range <- seq(row$month_start, row$month_end, by = "day")
+    
+    for (date in date_range) {
+      daily_record <- row
+      daily_record$Date <- date
+      daily_weather_records[[length(daily_weather_records) + 1]] <- daily_record
+    }
+  }
+  
+  daily_weather <- bind_rows(daily_weather_records) %>%
+    select(-month_start, -month_end)
+  
+  # Merge daily traffic with daily weather
+  merged_df <- daily_traffic %>%
+    inner_join(daily_weather, by = "Date") %>%
+    mutate(
+      DayOfWeek = wday(Date) - 1,
+      IsWeekend = if_else(DayOfWeek >= 5, 1, 0)
+    )
+  
+  return(merged_df)
+}
+
+# Integrate datasets
+integrated_data <- integrate_datasets(traffic_df, weather_df, emergency_df)
+
+# Save processed data
+write_csv(weather_df, here("data", "processed_weather_data.csv"))
+write_csv(traffic_df, here("data", "processed_traffic_data.csv"))
+write_csv(emergency_df, here("data", "processed_emergency_data.csv"))
+write_csv(integrated_data, here("data", "integrated_data.csv"))
+
+# Display the structure of the integrated dataset
+glimpse(integrated_data)
+```
+
+## Feature Engineering
+
+```{r}
+#| label: feature-engineering
+#| eval: false
+
+# Function to engineer features
+engineer_features <- function(df) {
+  # One-hot encode categorical variables
+  df <- df %>%
+    mutate(
+      Season_Spring = if_else(Season == "Spring", 1, 0),
+      Season_Summer = if_else(Season == "Summer", 1, 0),
+      Season_Fall = if_else(Season == "Fall", 1, 0),
+      Season_Winter = if_else(Season == "Winter", 1, 0)
+    )
+  
+  # Create borough dummy variables
+  boroughs <- unique(df$Boro)
+  for (borough in boroughs) {
+    col_name <- paste0("Boro_", borough)
+    df[[col_name]] <- if_else(df$Boro == borough, 1, 0)
+  }
+  
+  # Add lagged features (previous day's traffic volume)
+  for (borough in boroughs) {
+    col_name <- paste0("Boro_", borough)
+    lag_col_name <- paste0(borough, "_prev_day_vol")
+    
+    # Filter for this borough and sort by date
+    boro_data <- df %>%
+      filter(!!sym(col_name) == 1) %>%
+      arrange(Date)
+    
+    # Create lagged volume
+    boro_data <- boro_data %>%
+      mutate(!!lag_col_name := lag(Vol))
+    
+    # Update the original dataframe
+    df <- df %>%
+      left_join(
+        boro_data %>% select(Date, Boro, !!lag_col_name),
+        by = c("Date", "Boro")
+      )
+  }
+  
+  # Fill NA values from lagged features with mean values
+  for (col in names(df)) {
+    if (any(is.na(df[[col]]))) {
+      col_mean <- mean(df[[col]], na.rm = TRUE)
+      df[[col]] <- if_else(is.na(df[[col]]), col_mean, df[[col]])
+    }
+  }
+  
+  return(df)
+}
+
+# Engineer features
+engineered_data <- engineer_features(integrated_data)
+
+# Save engineered data
+write_csv(engineered_data, here("data", "engineered_data.csv"))
+
+# Summary of engineered features
+summary(engineered_data)
+```
+
+## Summary
+
+1. **Loaded and cleaned** three distinct datasets: traffic volumes, weather patterns, and emergency response times
+2. **Created time-based features** including time of day, day of week, and seasonal indicators
+3. **Performed exploratory visualizations** to understand traffic patterns by time and location
+4. **Integrated the datasets** to create a comprehensive view of NYC traffic patterns
+5. **Engineered additional features** to improve our modeling capabilities
+
+The prepared data will be called in the next chapter to develop the models and analysis.

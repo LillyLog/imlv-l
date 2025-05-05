@@ -6,25 +6,43 @@ execute:
   echo: true
 
 book:
-  title: "Final project"
-  author:
-    - Lilly Loghmani (lql2103)
-  repo-url: https://github.com/LillyLog/imlv-l
-  date: today
-  page-footer:
-    right: |
-      This book was built with <a href="https://quarto.org/">Quarto</a>.
-  repo-actions: [edit, issue]
+  title: "Understanding NYC Traffic Congestion: A Machine Learning Interpretability Approach"
+  author: "NYC Traffic Research Team"
+  date: "2023-06-15"
   chapters:
     - index.qmd
     - data.qmd
+    - analysis.qmd
     - results.qmd
-    - d3graph.qmd
     - conclusion.qmd
+  page-footer:
+    left: |
+      NYC Traffic Analysis
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  repo-actions: [edit, issue]
+  sidebar:
+    style: docked
+    background: light
 
 format:
   html:
     theme: cosmo
     code-fold: true
+    code-tools: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    highlight-style: github
+    html-math-method: katex
+    
+  pdf:
+    documentclass: scrreprt
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+
+bibliography: references.bib
 
 

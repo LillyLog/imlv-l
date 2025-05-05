@@ -1,1 +1,40 @@
 # Introduction
+
+## Project Overview
+
+This report is an analysis of traffic congestion patterns in New York City through interpretable machine learning methods. Traffic congestion is a significant challenge in major cities like NYC, affecting daily commutes, emergency response times, economic activity, and environmental quality. Using methods SHAP, LIME, and feature importance metrics, I aim to gether insights into the factors that influence traffic patterns in New York City.
+
+## Research Questions
+The primary questions this analysis seeks to answer include:
+
+1. What are the key factors that affect traffic congestion in NYC?
+2. Do different interpretability methods (SHAP, LIME, feature importance) identify consistent factors?
+3. How stable are these interpretations across different model types and data splits?
+4. Could these insights eventually inform policy decisions related to traffic management?
+
+## Data Sources
+
+This analysis integrates multiple data sources:
+
+- **Traffic Volume Data**: Traffic count data from NYC Department of Transportation: https://data.cityofnewyork.us/Transportation/Automated-Traffic-Volume-Counts/7ym2-wayt/about_data
+- **Weather Data**: Historical temperature and precipitation information: https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/city/time-series/USW00094728/tavg/12/0/2013-2024?base_prd=true&begbaseyear=2013&endbaseyear=2020
+- **Emergency Response Data**: Response time metrics as indicators of road network performance: https://data.cityofnewyork.us/Public-Safety/911-Open-Data-Local-Law-119/gpny-cuvw/about_data
+
+## Methodology
+
+I followed these steps: 
+
+1. **Data Preprocessing**: Cleaned, integrated, and feature engineered the data
+2. **Exploratory Analysis**: Visualized and statistically analyzed the traffic patterns
+3. **Model Development**: Trained multiple machine learning models to predict traffic volumes
+4. **Interpretability Analysis**: Applied and compared SHAP, LIME, and feature importance techniques
+5. **Stability Analysis**: Assessed the robustness of interpretations across different conditions
+
+## Book Structure
+
+The remainder of this book is organized as follows:
+
+- **Chapter 2: Data** - Description of data sources, cleaning procedures, and feature engineering
+- **Chapter 3: Analysis** - Methodological approach, model development, and interpretability techniques
+- **Chapter 4: Results** - Findings from the interpretability analysis and comparison of methods
+- **Chapter 5: Conclusion** - Summary of insights and recommendations for future research
