@@ -7,8 +7,8 @@ execute:
 
 book:
   title: "Understanding NYC Traffic Congestion: A Machine Learning Interpretability Approach"
-  author: "NYC Traffic Research Team"
-  date: "2023-06-15"
+  author: "Lilly Loghmani"
+  date: "2025-05-05"
   chapters:
     - index.qmd
     - data.qmd
