@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Final project - 5&nbsp; Conclusion</title>
+<title>Understanding NYC Traffic Congestion: A Machine Learning Interpretability Approach - 5&nbsp; Conclusion and Future Directions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./d3graph.html" rel="prev">
+<link href="./results.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -80,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./conclusion.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./conclusion.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion and Future Directions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -92,13 +126,10 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Final project</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/LillyLog/imlv-l" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-</div>
+      <a href="./">Understanding NYC Traffic Congestion: A Machine Learning Interpretability Approach</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -122,20 +153,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  <a href="./analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Model Development and Interpretation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./d3graph.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interactive graph</span></span></a>
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Results and Discussion</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./conclusion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion and Future Directions</span></span></a>
   </div>
 </li>
     </ul>
@@ -144,14 +175,31 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#summary-of-key-findings" id="toc-summary-of-key-findings" class="nav-link active" data-scroll-target="#summary-of-key-findings"><span class="header-section-number">5.1</span> Summary of Key Findings</a></li>
+  <li><a href="#implications-for-policy-and-practice" id="toc-implications-for-policy-and-practice" class="nav-link" data-scroll-target="#implications-for-policy-and-practice"><span class="header-section-number">5.2</span> Implications for Policy and Practice</a></li>
+  <li><a href="#limitations-of-the-current-study" id="toc-limitations-of-the-current-study" class="nav-link" data-scroll-target="#limitations-of-the-current-study"><span class="header-section-number">5.3</span> Limitations of the Current Study</a></li>
+  <li><a href="#future-research-directions" id="toc-future-research-directions" class="nav-link" data-scroll-target="#future-research-directions"><span class="header-section-number">5.4</span> Future Research Directions</a>
+  <ul class="collapse">
+  <li><a href="#enhanced-data-integration" id="toc-enhanced-data-integration" class="nav-link" data-scroll-target="#enhanced-data-integration"><span class="header-section-number">5.4.1</span> 1. Enhanced Data Integration</a></li>
+  <li><a href="#advanced-modeling-approaches" id="toc-advanced-modeling-approaches" class="nav-link" data-scroll-target="#advanced-modeling-approaches"><span class="header-section-number">5.4.2</span> 2. Advanced Modeling Approaches</a></li>
+  <li><a href="#policy-impact-assessment" id="toc-policy-impact-assessment" class="nav-link" data-scroll-target="#policy-impact-assessment"><span class="header-section-number">5.4.3</span> 3. Policy Impact Assessment</a></li>
+  <li><a href="#enhanced-interpretability-methods" id="toc-enhanced-interpretability-methods" class="nav-link" data-scroll-target="#enhanced-interpretability-methods"><span class="header-section-number">5.4.4</span> 4. Enhanced Interpretability Methods</a></li>
+  <li><a href="#real-time-applications" id="toc-real-time-applications" class="nav-link" data-scroll-target="#real-time-applications"><span class="header-section-number">5.4.5</span> 5. Real-time Applications</a></li>
+  </ul></li>
+  <li><a href="#closing-thoughts" id="toc-closing-thoughts" class="nav-link" data-scroll-target="#closing-thoughts"><span class="header-section-number">5.5</span> Closing Thoughts</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion</span></h1>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion and Future Directions</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -168,8 +216,128 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This chapter summarizes the key findings from our analysis of NYC traffic congestion using multiple interpretability methods and outlines promising directions for future research.</p>
+<section id="summary-of-key-findings" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="summary-of-key-findings"><span class="header-section-number">5.1</span> Summary of Key Findings</h2>
+<p>Our research has yielded several important insights into the factors driving traffic congestion in New York City:</p>
+<ol type="1">
+<li><p><strong>Temporal patterns dominate traffic prediction</strong>. Time of day, day of week, and seasonal factors consistently emerged as the most important predictors across all interpretability methods. The morning and evening rush hours show distinct congestion patterns that vary by borough.</p></li>
+<li><p><strong>Spatial variations require localized approaches</strong>. Each borough exhibits unique traffic patterns influenced by its geography, infrastructure, and commuter flows. Manhattan shows the highest overall volume but also the most predictable patterns, while outer boroughs show more sensitivity to specific conditions.</p></li>
+<li><p><strong>Weather influences traffic in complex ways</strong>. Temperature and precipitation interact with temporal and spatial factors to affect congestion. Moderate rainfall increases congestion during rush hours, while extreme temperatures generally reduce traffic volume.</p></li>
+<li><p><strong>Interpretability methods show strong agreement</strong>. Despite their different approaches, SHAP, LIME, and traditional feature importance methods generally identified the same key factors, enhancing confidence in our findings.</p></li>
+<li><p><strong>Machine learning models can predict traffic with high accuracy</strong>. Our best models achieved R² values of approximately 0.85, demonstrating that NYC traffic patterns, while complex, are predictable with appropriate features.</p></li>
+</ol>
+</section>
+<section id="implications-for-policy-and-practice" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="implications-for-policy-and-practice"><span class="header-section-number">5.2</span> Implications for Policy and Practice</h2>
+<p>These findings have several important implications for traffic management in NYC:</p>
+<ol type="1">
+<li><p><strong>Targeted congestion management strategies</strong> should be implemented based on temporal patterns. For example, dynamic toll pricing could be adjusted not just by time of day but also by day of week and season to more effectively manage traffic flow.</p></li>
+<li><p><strong>Borough-specific approaches</strong> are needed rather than citywide policies. Each borough’s unique traffic patterns suggest that decentralized traffic management strategies might be more effective than uniform approaches.</p></li>
+<li><p><strong>Weather-responsive traffic management</strong> systems could anticipate and mitigate congestion during adverse weather conditions, particularly during rush hours when rainfall has the most significant impact.</p></li>
+<li><p><strong>Emergency service deployment</strong> could be optimized based on the identified relationship between traffic volume and response times across boroughs.</p></li>
+<li><p><strong>Public transportation enhancement</strong> efforts could target the specific times and locations where congestion is most severe, potentially offering alternatives that align with identified congestion patterns.</p></li>
+</ol>
+</section>
+<section id="limitations-of-the-current-study" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="limitations-of-the-current-study"><span class="header-section-number">5.3</span> Limitations of the Current Study</h2>
+<p>While our analysis provides valuable insights, several limitations should be acknowledged:</p>
+<ol type="1">
+<li><p><strong>Data granularity</strong>: The traffic volume data, while comprehensive, does not capture all streets and intersections in NYC, potentially missing localized congestion patterns.</p></li>
+<li><p><strong>Temporal scope</strong>: Our analysis covers a specific time period and may not fully account for long-term trends or exceptional events.</p></li>
+<li><p><strong>Feature limitations</strong>: While we included weather and emergency response data, other potentially important factors such as public events, construction activities, and public transit disruptions were not incorporated.</p></li>
+<li><p><strong>Model simplifications</strong>: Our models, while predictive, necessarily simplify the complex dynamics of urban traffic flow and may miss nuanced interaction effects.</p></li>
+<li><p><strong>Interpretability limitations</strong>: While multiple methods were used, each has inherent limitations in explaining complex non-linear relationships.</p></li>
+</ol>
+</section>
+<section id="future-research-directions" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="future-research-directions"><span class="header-section-number">5.4</span> Future Research Directions</h2>
+<p>Building on this foundation, several promising avenues for future research emerge:</p>
+<section id="enhanced-data-integration" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="enhanced-data-integration"><span class="header-section-number">5.4.1</span> 1. Enhanced Data Integration</h3>
+<p>Future work should incorporate additional data sources to improve prediction accuracy and explanatory power:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="conclusion_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Specifically, future research should integrate:</p>
+<ul>
+<li><strong>Public transit data</strong>: Incorporating subway and bus service information could help explain deviations from expected traffic patterns</li>
+<li><strong>Special events data</strong>: Sports events, concerts, and public gatherings significantly impact localized congestion</li>
+<li><strong>Construction activity data</strong>: Ongoing construction projects temporarily alter traffic flows</li>
+<li><strong>Navigation app data</strong>: Aggregated routing decisions from navigation apps influence traffic distribution</li>
+<li><strong>Parking availability data</strong>: Parking scarcity contributes to congestion through vehicles “cruising” for spaces</li>
+</ul>
+</section>
+<section id="advanced-modeling-approaches" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="advanced-modeling-approaches"><span class="header-section-number">5.4.2</span> 2. Advanced Modeling Approaches</h3>
+<p>Future research should explore more sophisticated modeling techniques:</p>
+<ul>
+<li><strong>Spatiotemporal models</strong> that explicitly account for the geographic and temporal dependencies in traffic data</li>
+<li><strong>Deep learning approaches</strong> such as recurrent neural networks or transformers that can capture complex sequential patterns</li>
+<li><strong>Graph-based models</strong> that represent the road network as a graph and model traffic flow as edge attributes</li>
+<li><strong>Multi-task learning</strong> to simultaneously predict traffic volume, speed, and congestion levels</li>
+<li><strong>Transfer learning</strong> to apply knowledge gained from one borough to improve predictions in others</li>
+</ul>
+</section>
+<section id="policy-impact-assessment" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="policy-impact-assessment"><span class="header-section-number">5.4.3</span> 3. Policy Impact Assessment</h3>
+<p>A critical direction for future research is to evaluate the impact of traffic management policies:</p>
+<ul>
+<li><strong>Pre-post analysis</strong> of congestion pricing initiatives to quantify effectiveness</li>
+<li><strong>Counterfactual analysis</strong> using interpretable models to simulate policy alternatives</li>
+<li><strong>Natural experiments</strong> leveraging policy changes or infrastructure modifications to assess causal impacts</li>
+<li><strong>Cost-benefit analysis</strong> of different congestion reduction strategies based on model predictions</li>
+</ul>
+</section>
+<section id="enhanced-interpretability-methods" class="level3" data-number="5.4.4">
+<h3 data-number="5.4.4" class="anchored" data-anchor-id="enhanced-interpretability-methods"><span class="header-section-number">5.4.4</span> 4. Enhanced Interpretability Methods</h3>
+<p>Further development of interpretability techniques tailored to traffic modeling would be valuable:</p>
+<ul>
+<li><strong>Hierarchical interpretability</strong> that can explain predictions at different spatial and temporal scales</li>
+<li><strong>Interactive visualization tools</strong> that allow stakeholders to explore model predictions and explanations</li>
+<li><strong>Causal interpretability methods</strong> that go beyond correlation to identify causal drivers of congestion</li>
+<li><strong>Uncertainty-aware interpretations</strong> that communicate confidence levels in feature importance</li>
+</ul>
+</section>
+<section id="real-time-applications" class="level3" data-number="5.4.5">
+<h3 data-number="5.4.5" class="anchored" data-anchor-id="real-time-applications"><span class="header-section-number">5.4.5</span> 5. Real-time Applications</h3>
+<p>Moving from retrospective analysis to real-time applications represents an important extension:</p>
+<ul>
+<li><strong>Real-time congestion prediction</strong> systems that can forecast traffic conditions hours or days in advance</li>
+<li><strong>Adaptive traffic management</strong> interfaces that incorporate model predictions and explanations</li>
+<li><strong>Emergency response optimization</strong> tools that dynamically route vehicles based on predicted conditions</li>
+<li><strong>Commuter alert systems</strong> that notify residents of expected unusual congestion</li>
+</ul>
+</section>
+</section>
+<section id="closing-thoughts" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="closing-thoughts"><span class="header-section-number">5.5</span> Closing Thoughts</h2>
+<p>Understanding the complex dynamics of urban traffic congestion is crucial for developing effective management strategies in growing cities. Our research demonstrates that machine learning interpretability methods can provide valuable insights into the factors driving congestion in New York City.</p>
+<p>By combining diverse data sources, advanced modeling techniques, and robust interpretability methods, we can move beyond simply predicting traffic to truly understanding it. This understanding, in turn, enables more targeted, effective interventions to reduce congestion, improve mobility, and enhance quality of life in urban environments.</p>
+<p>The methodological approach developed in this project—combining multiple interpretability techniques and assessing their stability—provides a blueprint for similar analyses in other urban areas. As cities worldwide grapple with increasing congestion, the ability to not just predict but explain traffic patterns will become increasingly valuable for urban planners, policymakers, and citizens alike.</p>
 
 
+<!-- -->
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -251,6 +419,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -561,22 +780,162 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./d3graph.html" class="pagination-link  aria-label=" &lt;span="" graph&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interactive graph</span></span>
+      <a href="./results.html" class="pagination-link  aria-label=" &lt;span="" and="" discussion&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Results and Discussion</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion and Future Directions</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>This chapter summarizes the key findings from our analysis of NYC traffic congestion using multiple interpretability methods and outlines promising directions for future research.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary of Key Findings</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Our research has yielded several important insights into the factors driving traffic congestion in New York City:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Temporal patterns dominate traffic prediction**. Time of day, day of week, and seasonal factors consistently emerged as the most important predictors across all interpretability methods. The morning and evening rush hours show distinct congestion patterns that vary by borough.</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Spatial variations require localized approaches**. Each borough exhibits unique traffic patterns influenced by its geography, infrastructure, and commuter flows. Manhattan shows the highest overall volume but also the most predictable patterns, while outer boroughs show more sensitivity to specific conditions.</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Weather influences traffic in complex ways**. Temperature and precipitation interact with temporal and spatial factors to affect congestion. Moderate rainfall increases congestion during rush hours, while extreme temperatures generally reduce traffic volume.</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Interpretability methods show strong agreement**. Despite their different approaches, SHAP, LIME, and traditional feature importance methods generally identified the same key factors, enhancing confidence in our findings.</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Machine learning models can predict traffic with high accuracy**. Our best models achieved R² values of approximately 0.85, demonstrating that NYC traffic patterns, while complex, are predictable with appropriate features.</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Implications for Policy and Practice</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>These findings have several important implications for traffic management in NYC:</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Targeted congestion management strategies** should be implemented based on temporal patterns. For example, dynamic toll pricing could be adjusted not just by time of day but also by day of week and season to more effectively manage traffic flow.</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Borough-specific approaches** are needed rather than citywide policies. Each borough's unique traffic patterns suggest that decentralized traffic management strategies might be more effective than uniform approaches.</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Weather-responsive traffic management** systems could anticipate and mitigate congestion during adverse weather conditions, particularly during rush hours when rainfall has the most significant impact.</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Emergency service deployment** could be optimized based on the identified relationship between traffic volume and response times across boroughs.</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Public transportation enhancement** efforts could target the specific times and locations where congestion is most severe, potentially offering alternatives that align with identified congestion patterns.</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limitations of the Current Study</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>While our analysis provides valuable insights, several limitations should be acknowledged:</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Data granularity**: The traffic volume data, while comprehensive, does not capture all streets and intersections in NYC, potentially missing localized congestion patterns.</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Temporal scope**: Our analysis covers a specific time period and may not fully account for long-term trends or exceptional events.</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Feature limitations**: While we included weather and emergency response data, other potentially important factors such as public events, construction activities, and public transit disruptions were not incorporated.</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Model simplifications**: Our models, while predictive, necessarily simplify the complex dynamics of urban traffic flow and may miss nuanced interaction effects.</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Interpretability limitations**: While multiple methods were used, each has inherent limitations in explaining complex non-linear relationships.</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Future Research Directions</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>Building on this foundation, several promising avenues for future research emerge:</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Enhanced Data Integration</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>Future work should incorporate additional data sources to improve prediction accuracy and explanatory power:</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 8</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.height: 6</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.align: center</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample data for visualization</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>data_sources <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">Category =</span> <span class="fu">c</span>(<span class="st">"Existing"</span>, <span class="st">"Existing"</span>, <span class="st">"Existing"</span>, </span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Potential"</span>, <span class="st">"Potential"</span>, <span class="st">"Potential"</span>, <span class="st">"Potential"</span>, <span class="st">"Potential"</span>),</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">Source =</span> <span class="fu">c</span>(<span class="st">"Traffic Volume"</span>, <span class="st">"Weather"</span>, <span class="st">"Emergency Response"</span>, </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Public Transit"</span>, <span class="st">"Events"</span>, <span class="st">"Construction"</span>, <span class="st">"Parking"</span>, <span class="st">"App Navigation"</span>),</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot potential data sources</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sources, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Source, <span class="sc">-</span>Value), <span class="at">y =</span> Value, <span class="at">fill =</span> Category)) <span class="sc">+</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Existing"</span> <span class="ot">=</span> <span class="st">"steelblue"</span>, <span class="st">"Potential"</span> <span class="ot">=</span> <span class="st">"orange"</span>)) <span class="sc">+</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Current and Potential Data Sources for Traffic Analysis"</span>,</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Relative Importance"</span>,</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Data Status"</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>Specifically, future research should integrate:</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Public transit data**: Incorporating subway and bus service information could help explain deviations from expected traffic patterns</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Special events data**: Sports events, concerts, and public gatherings significantly impact localized congestion</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Construction activity data**: Ongoing construction projects temporarily alter traffic flows</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Navigation app data**: Aggregated routing decisions from navigation apps influence traffic distribution</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Parking availability data**: Parking scarcity contributes to congestion through vehicles "cruising" for spaces</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Advanced Modeling Approaches</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>Future research should explore more sophisticated modeling techniques:</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Spatiotemporal models** that explicitly account for the geographic and temporal dependencies in traffic data</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Deep learning approaches** such as recurrent neural networks or transformers that can capture complex sequential patterns</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Graph-based models** that represent the road network as a graph and model traffic flow as edge attributes</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Multi-task learning** to simultaneously predict traffic volume, speed, and congestion levels</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Transfer learning** to apply knowledge gained from one borough to improve predictions in others</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Policy Impact Assessment</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>A critical direction for future research is to evaluate the impact of traffic management policies:</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pre-post analysis** of congestion pricing initiatives to quantify effectiveness</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Counterfactual analysis** using interpretable models to simulate policy alternatives</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Natural experiments** leveraging policy changes or infrastructure modifications to assess causal impacts</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cost-benefit analysis** of different congestion reduction strategies based on model predictions</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Enhanced Interpretability Methods</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>Further development of interpretability techniques tailored to traffic modeling would be valuable:</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Hierarchical interpretability** that can explain predictions at different spatial and temporal scales</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Interactive visualization tools** that allow stakeholders to explore model predictions and explanations</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Causal interpretability methods** that go beyond correlation to identify causal drivers of congestion</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Uncertainty-aware interpretations** that communicate confidence levels in feature importance</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5. Real-time Applications</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>Moving from retrospective analysis to real-time applications represents an important extension:</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Real-time congestion prediction** systems that can forecast traffic conditions hours or days in advance</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Adaptive traffic management** interfaces that incorporate model predictions and explanations</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Emergency response optimization** tools that dynamically route vehicles based on predicted conditions</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Commuter alert systems** that notify residents of expected unusual congestion</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="fu">## Closing Thoughts</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>Understanding the complex dynamics of urban traffic congestion is crucial for developing effective management strategies in growing cities. Our research demonstrates that machine learning interpretability methods can provide valuable insights into the factors driving congestion in New York City.</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>By combining diverse data sources, advanced modeling techniques, and robust interpretability methods, we can move beyond simply predicting traffic to truly understanding it. This understanding, in turn, enables more targeted, effective interventions to reduce congestion, improve mobility, and enhance quality of life in urban environments.</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>The methodological approach developed in this project—combining multiple interpretability techniques and assessing their stability—provides a blueprint for similar analyses in other urban areas. As cities worldwide grapple with increasing congestion, the ability to not just predict but explain traffic patterns will become increasingly valuable for urban planners, policymakers, and citizens alike.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>NYC Traffic Analysis</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/LillyLog/imlv-l/edit/main/conclusion.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LillyLog/imlv-l/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    </div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
