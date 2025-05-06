@@ -38,7 +38,7 @@ These findings suggest:
 
 2. **XGBoost achieved the highest predictive accuracy** with an R² of approximately 0.31, indicating it can explain about 31% of the variance in traffic volume.
 
-3. **All models showed moderate predictive power**, confirming that traffic patterns, while complex, are predictable to some extent given appropriate features.
+3. **All models showed low predictive power**, confirming that traffic patterns are very complex, and only predictable to a limited extent given appropriate features.
 
 ## Key Factors Influencing Traffic Congestion
 
