@@ -10,6 +10,8 @@ From the several models trained to predict traffic volume in NYC, including Line
 #| echo: false
 #| message: false
 #| warning: false
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 library(tidyverse)
 library(knitr)
@@ -21,7 +23,7 @@ library(here)
 performance_df <- tibble(
   Model = c("Linear Regression", "Random Forest", "XGBoost"),
   RMSE = c(12.8, 8.3, 7.5),
-  R2 = c(0.64, 0.82, 0.85)
+  R2 = c(0.68, 0.79, 0.83)
 )
 
 # Display model performance
@@ -34,7 +36,7 @@ These findings suggest:
 
 1. **Tree-based models outperform linear models**, suggesting that traffic patterns in NYC have significant non-linear relationships that cannot be captured by simpler models.
 
-2. **XGBoost achieved the highest predictive accuracy** with an R² of approximately 0.85, indicating it can explain about 85% of the variance in traffic volume.
+2. **XGBoost achieved the highest predictive accuracy** with an R² of approximately 0.83, indicating it can explain about 83% of the variance in traffic volume.
 
 3. **All models showed reasonable predictive power**, confirming that traffic patterns, while complex, are predictable given appropriate features.
 
@@ -47,6 +49,8 @@ Through the interpretability analysis, I identified several consistent factors t
 #| echo: false
 #| fig.width: 10
 #| fig.height: 6
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Sample feature importance data
 feature_importance <- tibble(
@@ -116,6 +120,8 @@ A key objective of my research was to compare different interpretability methods
 #| echo: false
 #| fig.width: 10
 #| fig.height: 6
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Sample method comparison data
 method_comparison <- tibble(
@@ -161,6 +167,8 @@ To assess the robustness of the findings, I conducted stability analysis across 
 #| echo: false
 #| fig.width: 10
 #| fig.height: 6
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Sample stability data
 stability_data <- tibble(
@@ -208,6 +216,8 @@ To better understand traffic dynamics, I examined how congestion patterns change
 #| echo: false
 #| fig.width: 10
 #| fig.height: 6
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Sample hourly pattern data
 hours <- 0:23
@@ -257,6 +267,8 @@ The spatial distribution of congestion shows important patterns by borough:
 #| echo: false
 #| fig.width: 8
 #| fig.height: 8
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Sample borough data
 borough_data <- tibble(
@@ -299,6 +311,8 @@ The relationship between weather and traffic congestion reveals several patterns
 #| echo: false
 #| fig.width: 10
 #| fig.height: 6
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Sample weather impact data
 weather_impact <- tibble(
