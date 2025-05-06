@@ -200,7 +200,7 @@ Interpretability Approach}
 
 \section{Project Overview}\label{project-overview}
 
-Traffic congestion affects daily commutes, emergency response, the
+Traffic congestion affects daily commutes, emergency response times, the
 economy, and the environment in New York City. This report uses SHAP,
 LIME, and feature importance methods to identify the main factors
 driving traffic patterns.
@@ -227,7 +227,7 @@ The primary questions this analysis seeks to answer include:
 
 \section{Data Sources}\label{data-sources}
 
-This analysis integrates multiple data sources:
+This analysis integrates multiple data sources linked below:
 
 \begin{itemize}
 \tightlist
@@ -236,12 +236,11 @@ This analysis integrates multiple data sources:
   of Transportation:
   https://data.cityofnewyork.us/Transportation/Automated-Traffic-Volume-Counts/7ym2-wayt/about\_data
 \item
-  \textbf{Weather Data}: Historical temperature and precipitation
-  information:
+  \textbf{Weather Data}: Historical temperature and precipitation info:
   https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/city/time-series/USW00094728/tavg/12/0/2013-2024?base\_prd=true\&begbaseyear=2013\&endbaseyear=2020
 \item
-  \textbf{Emergency Response Data}: Response time metrics as indicators
-  of road network performance:
+  \textbf{Emergency Response Data}: Response time metrics to use as
+  indicators of road network speed:
   https://data.cityofnewyork.us/Public-Safety/911-Open-Data-Local-Law-119/gpny-cuvw/about\_data
 \end{itemize}
 
@@ -759,23 +758,6 @@ driving NYC traffic congestion.
 
 Load the necessary libraries and preprocessed data:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse)}
-\FunctionTok{library}\NormalTok{(tidymodels)}
-\FunctionTok{library}\NormalTok{(ranger) }\CommentTok{\# For Random Forest}
-\FunctionTok{library}\NormalTok{(xgboost)}
-\FunctionTok{library}\NormalTok{(lightgbm)}
-\FunctionTok{library}\NormalTok{(lime)}
-\FunctionTok{library}\NormalTok{(iml) }\CommentTok{\# For model{-}agnostic interpretations including SHAP}
-\FunctionTok{library}\NormalTok{(patchwork) }\CommentTok{\# For combining plots}
-\FunctionTok{library}\NormalTok{(here)}
-
-\CommentTok{\# Set seed for reproducibility}
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \section{Loading Preprocessed Data}\label{loading-preprocessed-data}
 
 Use the raw traffic CSV for modeling:
@@ -1009,7 +991,7 @@ Train multiple models to predict traffic volume:
 Training Linear Regression...
 Training Random Forest...
 Training XGBoost...
-[17:50:20] WARNING: src/learner.cc:767: 
+[18:10:10] WARNING: src/learner.cc:767: 
 Parameters: { "nrounds" } are not used.
 \end{verbatim}
 
@@ -1145,7 +1127,7 @@ Feature importance across the different models:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{analysis_files/figure-pdf/feature-importance-1.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{figures/feature-importance-1.pdf}
 
 \section{SHAP Value Analysis}\label{shap-value-analysis}
 
@@ -1449,9 +1431,9 @@ traffic patterns:
 \toprule
 Model & RMSE & R2\\
 \midrule
-Linear Regression & 12.8 & 0.64\\
-Random Forest & 8.3 & 0.82\\
-XGBoost & 7.5 & 0.85\\
+Linear Regression & 123 & 0.004\\
+Random Forest & 106 & 0.240\\
+XGBoost & 102 & 0.306\\
 \bottomrule
 \end{longtable}
 
@@ -1465,11 +1447,11 @@ These findings suggest:
   cannot be captured by simpler models.
 \item
   \textbf{XGBoost achieved the highest predictive accuracy} with an R²
-  of approximately 0.85, indicating it can explain about 85\% of the
+  of approximately 0.31, indicating it can explain about 31\% of the
   variance in traffic volume.
 \item
-  \textbf{All models showed reasonable predictive power}, confirming
-  that traffic patterns, while complex, are predictable given
+  \textbf{All models showed moderate predictive power}, confirming that
+  traffic patterns, while complex, are predictable to some extent given
   appropriate features.
 \end{enumerate}
 
@@ -1479,7 +1461,7 @@ Congestion}\label{key-factors-influencing-traffic-congestion}
 Through the interpretability analysis, I identified several consistent
 factors that influence traffic volume and congestion in NYC:
 
-\includegraphics{results_files/figure-pdf/key-factors-1.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{figures/key-factors-1.pdf}
 
 \subsection{Temporal Factors}\label{temporal-factors}
 
@@ -1588,7 +1570,7 @@ A key objective of my research was to compare different interpretability
 methods. I analyzed how SHAP, LIME, and traditional feature importance
 methods agree or disagree about the key factors:
 
-\includegraphics{results_files/figure-pdf/method-comparison-1.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{figures/method-comparison-1.pdf}
 
 This analysis reveals:
 
@@ -1624,7 +1606,7 @@ This analysis reveals:
 To assess the robustness of the findings, I conducted stability analysis
 across different data splits and model parameters:
 
-\includegraphics{results_files/figure-pdf/stability-analysis-1.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{figures/stability-analysis-1.pdf}
 
 The stability analysis findings:
 
@@ -1659,7 +1641,7 @@ Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 i Please use `linewidth` instead.
 \end{verbatim}
 
-\includegraphics{results_files/figure-pdf/temporal-patterns-1.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{figures/temporal-patterns-1.pdf}
 
 The temporal analysis reveals:
 
@@ -1710,7 +1692,7 @@ Patterns}\label{spatial-analysis-of-congestion-patterns}
 The spatial distribution of congestion shows important patterns by
 borough:
 
-\includegraphics{results_files/figure-pdf/spatial-patterns-1.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{figures/spatial-patterns-1.pdf}
 
 The spatial analysis shows:
 
@@ -1739,7 +1721,7 @@ The spatial analysis shows:
 The relationship between weather and traffic congestion reveals several
 patterns:
 
-\includegraphics{results_files/figure-pdf/weather-impact-1.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{figures/weather-impact-1.pdf}
 
 Key findings on weather impacts:
 

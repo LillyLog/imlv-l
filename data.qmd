@@ -2,22 +2,33 @@
 
 ## Data Processing
 
- ```{r}
- #| label: setup
- #| message: false
- #| warning: false
- 
- library(tidyverse)
- library(lubridate)
- library(ggplot2)
- library(scales)
- library(here)
- ```
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| fig.path: "figures/"
+#| out.width: "100%"
+
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(scales)
+library(here)
+library(knitr)
+library(kableExtra)
+
+# Set seed for reproducibility
+set.seed(42)
+```
 
 ### Weather Data Preprocessing
 
 ```{r}
 #| label: weather-preprocessing
+#| message: false
+#| warning: false
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Set file paths
 weather_temp_path <- here("data", "monthly_nyc_weather.csv")
@@ -75,7 +86,10 @@ head(weather_df)
 
 ```{r}
 #| label: traffic-preprocessing
-#| eval: false
+#| message: false
+#| warning: false
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 traffic_path <- here("data", "Automated_Traffic_Volume_Counts_20250505.csv")
 
@@ -128,6 +142,10 @@ summary(traffic_df)
 
 ```{r}
 #| label: emergency-preprocessing
+#| message: false
+#| warning: false
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 emergency_path <- here("data", "911_Open_Data_Local_Law_119_20250505.csv")
 
@@ -155,11 +173,12 @@ glimpse(emergency_df)
 
 ## Exploratory Data Analysis
 
-
 ```{r}
 #| label: weather-plots
 #| fig.width: 10
 #| fig.height: 6
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # 1. Weather patterns over time
 ggplot(weather_df, aes(x = Date, y = Temperature)) +
@@ -184,8 +203,9 @@ ggplot(weather_df, aes(x = Date, y = Rainfall)) +
 ```{r}
 #| label: traffic-plots
 #| fig.width: 10
-#| fig.height: 6
-#| eval: false
+#| fig.height: 8
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Traffic volume by time of day
 traffic_df %>%
@@ -221,7 +241,8 @@ traffic_df %>%
 #| label: emergency-plots
 #| fig.width: 10
 #| fig.height: 6
-#| eval: false
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Emergency response times by borough
 ggplot(emergency_df, aes(x = Borough, y = `Response Times`)) +
@@ -239,7 +260,10 @@ ggplot(emergency_df, aes(x = Borough, y = `Response Times`)) +
 
 ```{r}
 #| label: data-integration
-#| eval: false
+#| message: false
+#| warning: false
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Function to integrate datasets
 integrate_datasets <- function(traffic_df, weather_df, emergency_df) {
@@ -302,7 +326,10 @@ glimpse(integrated_data)
 
 ```{r}
 #| label: feature-engineering
-#| eval: false
+#| message: false
+#| warning: false
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Function to engineer features
 engineer_features <- function(df) {

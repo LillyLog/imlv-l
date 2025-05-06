@@ -6,11 +6,11 @@ This chapter is on the predictive models to look into the factors driving NYC tr
 Load the necessary libraries and preprocessed data:
 
 
-
 ```{r}
 #| label: setup
-#| message: false
-#| warning: false
+#| include: false
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 library(tidyverse)
 library(tidymodels)
@@ -31,6 +31,9 @@ Use the raw traffic CSV for modeling:
 
 ```{r}
 #| label: load-data
+#| fig.path: "figures/"
+#| out.width: "100%"
+
 # Load raw traffic data for modeling
 model_data <- read_csv(here("data", "Automated_Traffic_Volume_Counts_20250505.csv"))
 # Display structure
@@ -43,6 +46,8 @@ Split the data into training and testing sets, and prepare the feature set:
 
 ```{r}
 #| label: data-preparation
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Function to prepare data for modeling
 prepare_data_for_modeling <- function(df, target_col = "Vol", test_size = 0.2) {
@@ -94,6 +99,8 @@ cat("Testing features:", dim(model_data_split$X_test), "\n")
 Train multiple models to predict traffic volume:
 ```{r}
 #| label: model-training
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Function to train different models
 train_models <- function(X_train, X_test, y_train, y_test, X_train_processed, X_test_processed) {
@@ -219,6 +226,8 @@ Visualize the performance of the models:
 #| label: model-performance-viz
 #| fig.width: 10
 #| fig.height: 6
+#| fig.path: "figures/"
+#| out.width: "100%"
 #| eval: false
 
 # Plot R² comparison
@@ -253,6 +262,8 @@ Feature importance across the different models:
 #| label: feature-importance
 #| fig.width: 12
 #| fig.height: 8
+#| fig.path: "figures/"
+#| out.width: "100%"
 
 # Determine original feature list from Random Forest results
 original_feats <- names(results$RF$feature_importance)
@@ -326,6 +337,8 @@ ggplot(importance_long, aes(x = reorder(Feature, -Mean_Importance), y = Importan
 #| label: shap-analysis
 #| fig.width: 12
 #| fig.height: 10
+#| fig.path: "figures/"
+#| out.width: "100%"
 #| eval: false
 
 # Create an explainer using the iml package
@@ -365,6 +378,8 @@ plot(feature_importance)
 #| label: lime-analysis
 #| fig.width: 12
 #| fig.height: 8
+#| fig.path: "figures/"
+#| out.width: "100%"
 #| eval: false
 
 # Create a LIME explainer
@@ -403,6 +418,8 @@ plot_lime
 #| label: stability-analysis
 #| fig.width: 12
 #| fig.height: 10
+#| fig.path: "figures/"
+#| out.width: "100%"
 #| eval: false
 
 # Function for stability analysis
@@ -528,7 +545,9 @@ stability_plot
 ```{r}
 #| label: method-comparison
 #| fig.width: 12
-#| fig.height: 8
+#| fig.height: 10
+#| fig.path: "figures/"
+#| out.width: "100%"
 #| eval: false
 
 # Combine all importance rankings

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Traffic congestion affects daily commutes, emergency response, the economy, and the environment in New York City. This report uses SHAP, LIME, and feature importance methods to identify the main factors driving traffic patterns.
+Traffic congestion affects daily commutes, emergency response times, the economy, and the environment in New York City. This report uses SHAP, LIME, and feature importance methods to identify the main factors driving traffic patterns.
 
 ## Research Questions
 The primary questions this analysis seeks to answer include:
@@ -14,11 +14,11 @@ The primary questions this analysis seeks to answer include:
 
 ## Data Sources
 
-This analysis integrates multiple data sources:
+This analysis integrates multiple data sources linked below:
 
 - **Traffic Volume Data**: Traffic count data from NYC Department of Transportation: https://data.cityofnewyork.us/Transportation/Automated-Traffic-Volume-Counts/7ym2-wayt/about_data
-- **Weather Data**: Historical temperature and precipitation information: https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/city/time-series/USW00094728/tavg/12/0/2013-2024?base_prd=true&begbaseyear=2013&endbaseyear=2020
-- **Emergency Response Data**: Response time metrics as indicators of road network performance: https://data.cityofnewyork.us/Public-Safety/911-Open-Data-Local-Law-119/gpny-cuvw/about_data
+- **Weather Data**: Historical temperature and precipitation info: https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/city/time-series/USW00094728/tavg/12/0/2013-2024?base_prd=true&begbaseyear=2013&endbaseyear=2020
+- **Emergency Response Data**: Response time metrics to use as indicators of road network speed: https://data.cityofnewyork.us/Public-Safety/911-Open-Data-Local-Law-119/gpny-cuvw/about_data
 
 ## Methodology
 
