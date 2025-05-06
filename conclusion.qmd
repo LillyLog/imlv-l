@@ -1,8 +1,8 @@
-# Conclusion and Future Directions
+# Conclusion
 
 This chapter summarizes the key findings from the analysis of NYC traffic congestion using multiple interpretability methods and outlines promising directions for future research.
 
-## Summary of Key Findings
+## Summary
 
 1. **Temporal patterns dominate traffic prediction**. Time of day, day of week, and seasonal factors were the most important predictors across all interpretability methods. The morning and evening rush hours show distinct congestion patterns that vary by borough. This makes sense, as the morning rush hour is when people are going to work and the evening rush hour is when people are coming home from work.
 
@@ -14,7 +14,7 @@ This chapter summarizes the key findings from the analysis of NYC traffic conges
 
 5. **Machine learning models can predict traffic with high accuracy**. The best model achieved R² values of approximately 0.85, demonstrating that NYC traffic patterns, while complex, are predictable with appropriate features.
 
-## Limitations of the Current Study
+## Limitations
 
 While the analysis provides valuable insights, several limitations should be acknowledged:
 
