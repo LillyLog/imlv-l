@@ -71,7 +71,7 @@ ggplot(feature_importance, aes(x = reorder(Feature, Importance), y = Importance)
 
 Temporal factors seemed to be the strongest predictors of traffic volume:
 
-1. **Time of Day**: The most influential factor across all models. Our analysis shows distinct patterns:
+1. **Time of Day**: The most influential factor across all models. The analysis shows distinct patterns:
    - Morning rush hour (7-9 AM) shows the highest congestion, particularly in Manhattan and Queens
    - Evening rush hour (4-7 PM) shows more dispersed congestion across all boroughs
    - Midday traffic (10 AM - 3 PM) shows moderate but consistent volume
@@ -109,7 +109,7 @@ Previous day's traffic volume also was as a meaningful predictor, suggesting:
 
 ## Comparison of Interpretability Methods
 
-A key objective of our research was to compare different interpretability methods. I analyzed how SHAP, LIME, and traditional feature importance methods agree or disagree about the key factors:
+A key objective of my research was to compare different interpretability methods. I analyzed how SHAP, LIME, and traditional feature importance methods agree or disagree about the key factors:
 
 ```{r}
 #| label: method-comparison
