@@ -214,11 +214,12 @@ performance_df
 ```
 
 ## Model Performance Visualization
-Visualize the performance of our models:
+Visualize the performance of the models:
 ```{r}
 #| label: model-performance-viz
 #| fig.width: 10
 #| fig.height: 6
+#| eval: false
 
 # Plot R² comparison
 ggplot(performance_df, aes(x = Model, y = R2, fill = Model)) +
