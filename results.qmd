@@ -1,10 +1,9 @@
 # Results and Discussion
 
-This chapter presents the findings from our analysis of NYC traffic congestion patterns using multiple interpretability methods. We'll examine the performance of different models, the key factors identified by various interpretability techniques, and the stability of these insights.
-
+This chapter has the findings from the analysis of NYC traffic congestion patterns using multiple interpretability methods
 ## Model Performance
 
-We trained several models to predict traffic volume in NYC, including Linear Regression, Random Forest, and XGBoost. The performance comparison reveals important insights about the predictability of traffic patterns:
+From the several models trained to predict traffic volume in NYC, including Linear Regression, Random Forest, and XGBoost. The performance comparison reveals important insights about the predictability of traffic patterns:
 
 ```{r}
 #| label: load-results
@@ -31,7 +30,7 @@ performance_df %>%
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE)
 ```
 
-Our findings indicate:
+These findings suggest:
 
 1. **Tree-based models outperform linear models**, suggesting that traffic patterns in NYC have significant non-linear relationships that cannot be captured by simpler models.
 
@@ -41,7 +40,7 @@ Our findings indicate:
 
 ## Key Factors Influencing Traffic Congestion
 
-Through our interpretability analysis, we identified several consistent factors that influence traffic volume and congestion in NYC:
+Through the interpretability analysis, I identified several consistent factors that influence traffic volume and congestion in NYC:
 
 ```{r}
 #| label: key-factors
@@ -70,7 +69,7 @@ ggplot(feature_importance, aes(x = reorder(Feature, Importance), y = Importance)
 
 ### Temporal Factors
 
-Temporal factors emerged as the strongest predictors of traffic volume:
+Temporal factors seemed to be the strongest predictors of traffic volume:
 
 1. **Time of Day**: The most influential factor across all models. Our analysis shows distinct patterns:
    - Morning rush hour (7-9 AM) shows the highest congestion, particularly in Manhattan and Queens
@@ -78,17 +77,17 @@ Temporal factors emerged as the strongest predictors of traffic volume:
    - Midday traffic (10 AM - 3 PM) shows moderate but consistent volume
    - Night hours (9 PM - 5 AM) show significantly reduced traffic
 
-2. **Day of Week**: Weekdays and weekends exhibit markedly different patterns:
+2. **Day of Week**: Weekdays and weekends have very different patterns:
    - Weekdays have higher overall volume but predictable patterns
    - Weekends have lower volume but more variability in certain areas
 
-3. **Seasonal Effects**: While not as strong as daily and weekly cycles, seasonal factors do play a role:
+3. **Seasonal Effects**: While not as strong as daily and weekly cycles, seasonal factors did play a role:
    - Summer months show reduced commuter traffic but increased recreational travel
    - Winter months, particularly December, show higher congestion around commercial areas
 
 ### Spatial Factors
 
-The borough emerges as a critical factor in determining traffic patterns:
+The borough is also a critical factor in determining traffic patterns:
 
 1. **Manhattan** consistently shows the highest overall traffic volume but also the most predictable patterns
 2. **Queens and Brooklyn** show significant volume, particularly at key bridge and tunnel entry points
@@ -96,21 +95,21 @@ The borough emerges as a critical factor in determining traffic patterns:
 
 ### Weather Factors
 
-Weather variables showed moderate importance in predicting traffic patterns:
+Weather variables showed some importance in predicting traffic patterns:
 
 1. **Temperature**: Extreme temperatures (both hot and cold) correlate with reduced traffic volume
 2. **Rainfall**: Moderate to heavy rainfall (>0.5 inches) correlates with increased congestion, particularly during rush hours
 
 ### Historical Factors
 
-Previous day's traffic volume emerged as a meaningful predictor, suggesting:
+Previous day's traffic volume also was as a meaningful predictor, suggesting:
 
 1. **Traffic patterns have temporal momentum** - high congestion days tend to be followed by similar patterns
 2. **Weekly rhythms are strong** - similar days of the week show consistent patterns
 
 ## Comparison of Interpretability Methods
 
-A key objective of our research was to compare different interpretability methods. We analyzed how SHAP, LIME, and traditional feature importance methods agree or disagree about the key factors:
+A key objective of our research was to compare different interpretability methods. I analyzed how SHAP, LIME, and traditional feature importance methods agree or disagree about the key factors:
 
 ```{r}
 #| label: method-comparison
@@ -142,7 +141,7 @@ ggplot(method_comparison, aes(x = Feature, y = Rank, color = Method, group = Met
   )
 ```
 
-Our analysis reveals:
+This analysis reveals:
 
 1. **Strong agreement on top factors**: All methods consistently identified time of day and borough as the most important factors.
 
@@ -155,7 +154,7 @@ Our analysis reveals:
 
 ## Stability Analysis
 
-To assess the robustness of our findings, we conducted stability analysis across different data splits and model parameters:
+To assess the robustness of the findings, I conducted stability analysis across different data splits and model parameters:
 
 ```{r}
 #| label: stability-analysis
@@ -190,7 +189,7 @@ stability_data %>%
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-Our stability analysis findings:
+The stability analysis findings:
 
 1. **Highly stable top factors**: Time of day and borough consistently ranked as the most important features across all data splits and model variants.
 
@@ -202,7 +201,7 @@ Our stability analysis findings:
 
 ## Temporal Analysis of Congestion Patterns
 
-To better understand traffic dynamics, we examined how congestion patterns change over time:
+To better understand traffic dynamics, I examined how congestion patterns change over time:
 
 ```{r}
 #| label: temporal-patterns
@@ -234,7 +233,7 @@ ggplot(hourly_data, aes(x = Hour, y = Volume, color = Borough)) +
   theme_minimal()
 ```
 
-Our temporal analysis reveals:
+The temporal analysis reveals:
 
 1. **Distinct borough patterns**:
    - Manhattan shows the highest peak during morning rush hour, followed by a sustained plateau during working hours
@@ -279,7 +278,7 @@ borough_plot <- ggplot(borough_data, aes(x = Traffic_Volume, y = Response_Time, 
 borough_plot
 ```
 
-Our spatial analysis shows:
+The spatial analysis shows:
 
 1. **Manhattan**: Highest traffic volume but moderate emergency response times, likely due to comprehensive emergency infrastructure
 
@@ -343,7 +342,7 @@ Key findings on weather impacts:
 
 ## Summary of Key Findings
 
-Our comprehensive analysis of NYC traffic congestion using multiple interpretability methods reveals:
+This comprehensive analysis of NYC traffic congestion using multiple interpretability methods reveals:
 
 1. **Temporal factors dominate**: Time of day, day of week, and seasonal patterns are the most important predictors of traffic volume.
 

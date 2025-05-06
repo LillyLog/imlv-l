@@ -1,23 +1,5 @@
 # Data
 
-## Description
-
-## Missing value analysis
-
-# Data Preparation
-
-This chapter details the data sources, cleaning processes, and feature engineering steps performed to prepare the datasets for analysis.
-
-## Data Sources
-
-The analysis integrates three main data sources:
-
-1. **Traffic Volume Data**: The "Automated Traffic Volume Counts" dataset from NYC DOT, with vehicle counts at specific locations, timestamps, and road segments.
-
-2. **Weather Data**: Monthly temperature and rainfall data for NYC from 2013-2025.
-
-3. **Emergency Response Data**: The "911 Open Data" dataset with emergency response times by borough and month.
-
 ## Data Cleaning and Preprocessing
 
 ```{r}
