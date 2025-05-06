@@ -2,6 +2,18 @@
 
 ## Data Processing
 
+ ```{r}
+ #| label: setup
+ #| message: false
+ #| warning: false
+ 
+ library(tidyverse)
+ library(lubridate)
+ library(ggplot2)
+ library(scales)
+ library(here)
+ ```
+
 ### Weather Data Preprocessing
 
 ```{r}
