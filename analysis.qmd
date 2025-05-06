@@ -1,6 +1,6 @@
 # Model Development and Interpretation
 
-This chapter describes the methodology for building predictive models of NYC traffic congestion and applying multiple interpretability techniques to understand the key drivers of traffic patterns.
+This chapter is on the predictive models to look into the factors driving NYC traffic congestion.
 
 ## Setup
 Load the necessary libraries and preprocessed data:

@@ -1,18 +1,6 @@
 # Data
 
-## Data Cleaning and Preprocessing
-
-```{r}
-#| label: setup
-#| message: false
-#| warning: false
-
-library(tidyverse)
-library(lubridate)
-library(ggplot2)
-library(scales)
-library(here)
-```
+## Data Processing
 
 ### Weather Data Preprocessing
 
@@ -371,6 +359,6 @@ summary(engineered_data)
 2. **Created time-based features** including time of day, day of week, and seasonal indicators
 3. **Performed exploratory visualizations** to understand traffic patterns by time and location
 4. **Integrated the datasets** to create a comprehensive view of NYC traffic patterns
-5. **Engineered additional features** to improve our modeling capabilities
+5. **Engineered additional features** to improve the model's predictive capabilities
 
 The prepared data will be called in the next chapter to develop the models and analysis.

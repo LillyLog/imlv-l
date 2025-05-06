@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This report is an analysis of traffic congestion patterns in New York City through interpretable machine learning methods. Traffic congestion is a significant challenge in major cities like NYC, affecting daily commutes, emergency response times, economic activity, and environmental quality. Using methods SHAP, LIME, and feature importance metrics, I aim to gether insights into the factors that influence traffic patterns in New York City.
+Traffic congestion affects daily commutes, emergency response, the economy, and the environment in New York City. This report uses SHAP, LIME, and feature importance methods to identify the main factors driving traffic patterns.
 
 ## Research Questions
 The primary questions this analysis seeks to answer include:
@@ -22,13 +22,13 @@ This analysis integrates multiple data sources:
 
 ## Methodology
 
-I followed these steps: 
+The analysis steps are:
 
-1. **Data Preprocessing**: Cleaned, integrated, and feature engineered the data
-2. **Exploratory Analysis**: Visualized and statistically analyzed the traffic patterns
-3. **Model Development**: Trained multiple machine learning models to predict traffic volumes
-4. **Interpretability Analysis**: Applied and compared SHAP, LIME, and feature importance techniques
-5. **Stability Analysis**: Assessed the robustness of interpretations across different conditions
+1. **Data Preprocessing**: Cleaned, integrated, and engineered features.
+2. **Exploratory Analysis**: Generated visual summaries and statistical checks.
+3. **Model Development**: Trained machine learning models to predict traffic volume.
+4. **Interpretability Analysis**: Applied SHAP, LIME, and feature importance methods.
+5. **Stability Analysis**: Evaluated result consistency across models and data splits.
 
 ## Book Structure
 
